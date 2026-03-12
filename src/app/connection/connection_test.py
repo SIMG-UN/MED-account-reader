@@ -1,5 +1,6 @@
 import yaml
 import logging
+import os
 
 def load_credentials(filepath):
     try:
@@ -41,7 +42,7 @@ def connect_to_gmail_imap(user, password):
                         if "Todo salió bien" in body.decode():
                             print(body.decode())
             else:
-                print("Here!")
+                print("Aquí")
                 body = msg.get_payload(decode=True)
                 print(body.decode())
         return mail
