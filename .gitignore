@@ -205,3 +205,15 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+
+# mi cosas grrrr
+_docs/
+.logs/
+.vols/
+data/
+.txt
+z.txt
+z1.py 
+z2.py 
+z3.py 
