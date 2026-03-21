@@ -109,8 +109,10 @@ def main():
         "v1",
         credentials=creds
     )
+    profile = service.users().getProfile(userId="me").execute()
+    print("Email autenticado:", profile["emailAddress"])
 
-    query = "from:thomas@solenium.co"
+    query = "alertasynotificaciones@an.notificacionesbancolombia.com" #
 
     messages = get_all_messages(service, query)
 
@@ -123,7 +125,7 @@ def main():
 
     import json
 
-    output_path = settings.ROOT / "data" / "solenium_emails.json"
+    output_path = settings.ROOT / "data" / "bancolombia.json"
 
     with open(output_path, "w") as f:
         json.dump(emails, f, indent=2)
@@ -136,6 +138,6 @@ if __name__ == "__main__":
 
 
 """
-python3 -m src.app.BancolombiaEchoSaver.main
+python3 -m src.app.BancolombiaEchoSaver.gmail  information_structurer
 
 """
