@@ -1,0 +1,12 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: db_local
+    environment:
+      POSTGRES_DB: local
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./src/migrations:/docker-entrypoint-initdb.d

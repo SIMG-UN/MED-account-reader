@@ -1,0 +1,11 @@
+[project]
+name = "med-account-reader"
+version = "0.1.0"
+description = "Project for financial analysis using AI"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "psycopg2>=2.9.11",
+    "google-generativeai>=0.8.0",
+    "python-dotenv>=1.0.0",
+]
