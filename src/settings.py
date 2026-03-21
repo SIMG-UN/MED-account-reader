@@ -13,10 +13,9 @@ DB_PORT = os.getenv("DB_PORT")
 DB_NAME = os.getenv("DB_NAME")
 
 
-EMAIL = os.getenv("EMAIL")
-EMAIL_APP_PASSWORD = os.getenv("EMAIL_PASS")
 
-
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 if __name__=="__main__":
     print(ROOT)
