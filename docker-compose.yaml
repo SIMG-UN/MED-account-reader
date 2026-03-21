@@ -1,6 +1,7 @@
 services:
   account-reader-db:
-    image: pgvector/pgvector:pg16
+    image: postgres:15
+    # image: pgvector/pgvector:pg16
     container_name: account-reader-db
     environment:
       POSTGRES_USER: ${DB_USER}
