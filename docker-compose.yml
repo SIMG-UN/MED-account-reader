@@ -10,3 +10,23 @@ services:
       - "5432:5432"
     volumes:
       - ./src/migrations:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d local"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build: .
+    container_name: api_local
+    ports:
+      - "8080:8080"
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: local
+      DB_USER: admin
+      DB_PASSWORD: admin
+    depends_on:
+      db:
+        condition: service_healthy

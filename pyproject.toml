@@ -5,7 +5,15 @@ description = "Project for financial analysis using AI"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "psycopg2>=2.9.11",
+    "psycopg2-binary>=2.9.11",
     "google-generativeai>=0.8.0",
     "python-dotenv>=1.0.0",
+    "fastapi>=0.135.2",
+    "uvicorn>=0.42.0",
+    "pydantic-settings>=2.13.1",
+    "httpx>=0.28.1",
+    "pytest>=9.0.2",
+    "pytest-mock>=3.15.1",
+    "email-validator>=2.3.0",
+    "sqlalchemy>=2.0.48",
 ]
