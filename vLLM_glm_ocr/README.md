@@ -1,0 +1,1 @@
+Directorio en donde estará la logica de vllm para disponivilizar gml-ocr
