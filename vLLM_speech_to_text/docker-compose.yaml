@@ -1,0 +1,38 @@
+services:
+
+  vllm:
+    build:
+      context: .
+      dockerfile: Dockerfile.vLLM
+    command: ["Qwen/Qwen3-ASR-0.6B", "--port", "8080", "--gpu-memory-utilization", "0.85", "--max-model-len", "2048", "--enforce-eager"]
+    ports:
+      - "8082:8080"
+    environment:
+      - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+    volumes:
+      - ~/.cache/huggingface:/root/.cache/huggingface
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 20
+      start_period: 300s   # model download can take several minutes
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - "8089:8089"
+    environment:
+      - VLLM_URL=http://vllm:8080
+    depends_on:
+      vllm:
+        condition: service_healthy

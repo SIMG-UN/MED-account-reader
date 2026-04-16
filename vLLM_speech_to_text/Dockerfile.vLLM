@@ -1,0 +1,4 @@
+FROM vllm/vllm-openai:nightly
+
+# Qwen3-ASR requires audio dependencies for vLLM
+RUN pip install --no-cache-dir "vllm[audio]"
